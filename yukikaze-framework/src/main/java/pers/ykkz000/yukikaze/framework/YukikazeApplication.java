@@ -24,20 +24,22 @@ import pers.ykkz000.yukikaze.framework.annotation.LoadProperties;
 import pers.ykkz000.yukikaze.framework.api.AnnotationProcessor;
 import pers.ykkz000.yukikaze.framework.api.ModuleStarter;
 import pers.ykkz000.yukikaze.framework.api.annotation.DefineAnnotationProcessors;
-import pers.ykkz000.yukikaze.framework.util.ClassPathBeanScanner;
+import pers.ykkz000.yukikaze.framework.util.ResourceUtil;
 
-import javax.annotation.Nonnull;
-import java.io.FileInputStream;
+import jakarta.annotation.Nonnull;
+import pers.ykkz000.yukikaze.framework.util.YamlUtil;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The entry point of the application.
+ *
+ * @author ykkz000
+ */
 public class YukikazeApplication {
-    private static final String CLASSPATH_PREFIX = "classpath:";
-
     private final Class<?> mainClass;
 
     public YukikazeApplication(Class<?> mainClass) {
@@ -85,19 +87,7 @@ public class YukikazeApplication {
         LoadProperties loadProperties = clazz.getAnnotation(LoadProperties.class);
         String[] value = loadProperties.path();
         for (String s : value) {
-            if (s.startsWith(CLASSPATH_PREFIX)) {
-                String path = s.substring(CLASSPATH_PREFIX.length());
-                if (!path.startsWith("/")) {
-                    path = "/" + path;
-                }
-                InputStream inputStream = clazz.getResourceAsStream(path);
-                if (inputStream == null) {
-                    throw new IOException("Resource not found: " + s);
-                }
-                context.getProperties().load(new InputStreamReader(inputStream));
-            } else {
-                context.getProperties().load(new InputStreamReader(new FileInputStream(s)));
-            }
+            YamlUtil.extractYamlProperties(ResourceUtil.getResourceInputStream(clazz, s), (key, obj) -> context.getProperties().put(key, obj.toString()));
         }
     }
 

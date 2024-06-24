@@ -16,13 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package pers.ykkz000.yukikaze.framework.util;
+package pers.ykkz000.yukikaze.framework;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.AnnotationNode;
 import org.objectweb.asm.tree.ClassNode;
-import pers.ykkz000.yukikaze.framework.BeanFactory;
 import pers.ykkz000.yukikaze.framework.annotation.Bean;
 
 import java.io.File;
@@ -39,6 +38,11 @@ import java.util.Optional;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+/**
+ * Scanner for classpath to scan beans.
+ *
+ * @author ykkz000
+ */
 public class ClassPathBeanScanner {
     public List<String> scanBeans(String basePackage, Class<?> clazz, BeanFactory beanFactory) throws IOException {
         List<String> autoLoadBeanNames = new ArrayList<>();

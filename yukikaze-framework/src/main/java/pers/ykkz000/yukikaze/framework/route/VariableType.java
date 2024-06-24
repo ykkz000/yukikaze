@@ -20,6 +20,11 @@ package pers.ykkz000.yukikaze.framework.route;
 
 import lombok.Getter;
 
+/**
+ * Variable type.
+ *
+ * @author ykkz000
+ */
 @Getter
 public enum VariableType {
     /**
@@ -65,6 +70,13 @@ public enum VariableType {
     }
 
     public interface Parser {
+        /**
+         * Parse string to object.
+         *
+         * @param str string.
+         * @return object.
+         * @throws IllegalArgumentException if parse failed.
+         */
         Object parse(String str) throws IllegalArgumentException;
     }
 }

@@ -28,6 +28,11 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.*;
 
+/**
+ * Route the commands
+ *
+ * @author ykkz000
+ */
 public class CommandRouter {
     private final ApplicationContext context;
     private final Map<String, HandlerEntry> queryHandlers;

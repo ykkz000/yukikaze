@@ -22,9 +22,14 @@ import pers.ykkz000.yukikaze.framework.annotation.BindCommand;
 import pers.ykkz000.yukikaze.framework.annotation.Controller;
 import pers.ykkz000.yukikaze.framework.api.AnnotationProcessor;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.lang.reflect.Method;
 
+/**
+ * Base annotation processor.
+ *
+ * @author ykkz000
+ */
 public class BaseAnnotationProcessor implements AnnotationProcessor {
     private final ApplicationContext context;
 

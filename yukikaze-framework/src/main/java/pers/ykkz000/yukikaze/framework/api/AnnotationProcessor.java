@@ -18,10 +18,27 @@
 
 package pers.ykkz000.yukikaze.framework.api;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
+/**
+ * Annotation processor.
+ *
+ * @author ykkz000
+ */
 public interface AnnotationProcessor {
-    default void processBeanAnnotationsBeforeCreateInstance(@Nonnull Class<?> clazz) {}
+    /**
+     * Process annotations before create instance.
+     *
+     * @param clazz Class&lt;?&gt; object that indicates the class.
+     */
+    default void processBeanAnnotationsBeforeCreateInstance(@Nonnull Class<?> clazz) {
+    }
 
-    default void processBeanAnnotationsAfterCreateInstance(@Nonnull Object bean) {}
+    /**
+     * Process annotations after create instance.
+     *
+     * @param bean Bean object.
+     */
+    default void processBeanAnnotationsAfterCreateInstance(@Nonnull Object bean) {
+    }
 }

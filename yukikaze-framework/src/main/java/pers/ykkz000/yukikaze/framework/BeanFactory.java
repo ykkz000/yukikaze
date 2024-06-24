@@ -29,6 +29,11 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Bean factory
+ *
+ * @author ykkz000
+ */
 public class BeanFactory {
     private final ApplicationContext context;
     private final Map<String, String> beanClassNames;

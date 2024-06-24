@@ -20,6 +20,15 @@ package pers.ykkz000.yukikaze.framework.api;
 
 import pers.ykkz000.yukikaze.framework.ApplicationContext;
 
+/**
+ * Starter interfaces for modules.
+ *
+ * @author ykkz000
+ */
 public interface ModuleStarter {
+    /**
+     * The entry point of the module.
+     * @param context Application context.
+     */
     void start(ApplicationContext context);
 }

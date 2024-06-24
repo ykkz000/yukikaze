@@ -20,6 +20,11 @@ package pers.ykkz000.yukikaze.framework;
 
 import org.slf4j.LoggerFactory;
 
+/**
+ * Default exception handler.
+ *
+ * @author ykkz000
+ */
 public class ExceptionHandler implements Thread.UncaughtExceptionHandler{
     @Override
     public void uncaughtException(Thread t, Throwable e) {

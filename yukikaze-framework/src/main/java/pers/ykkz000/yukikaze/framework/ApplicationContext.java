@@ -22,11 +22,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import pers.ykkz000.yukikaze.framework.api.AnnotationProcessor;
 import pers.ykkz000.yukikaze.framework.route.CommandRouter;
-import pers.ykkz000.yukikaze.framework.util.YamlNode;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * Application Context.
+ *
+ * @author ykkz000
+ */
 public class ApplicationContext {
     @Getter
     private static ApplicationContext instance;
@@ -41,7 +47,7 @@ public class ApplicationContext {
     @Getter
     private final String[] args;
     @Getter
-    private final YamlNode properties;
+    private final Map<String, String> properties;
     @Getter
     private final CommandRouter commandRouter;
 
@@ -54,11 +60,7 @@ public class ApplicationContext {
         annotationProcessors = new ArrayList<>();
         annotationProcessors.add(new BaseAnnotationProcessor(this));
         beanFactory = new BeanFactory(this);
-        properties = new YamlNode();
-    }
-
-    public YamlNode getYukikazeProperties() {
-        return properties.child("yukikaze");
+        properties = new Hashtable<>();
     }
 
     public static class Builder {

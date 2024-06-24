@@ -20,6 +20,11 @@ package pers.ykkz000.yukikaze.framework.exception;
 
 import lombok.Getter;
 
+/**
+ * Response error exception.
+ *
+ * @author ykkz000
+ */
 @Getter
 public class ResponseErrorException extends Exception {
     private final int status;
